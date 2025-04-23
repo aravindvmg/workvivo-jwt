@@ -9,7 +9,11 @@
     "routes": [
       {
         "src": "/.well-known/jwks.json",
-        "dest": "/app.js"
+        "dest": "app.js"
+      },
+      {
+        "src": "/(.*)",
+        "dest": "app.js"
       }
     ]
   }
