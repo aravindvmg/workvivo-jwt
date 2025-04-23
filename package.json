@@ -4,7 +4,9 @@
   "type": "module",
   "scripts": {
     "generate:jwks": "node scripts/generate-jwks.js",
-    "generate:jwt": "node scripts/generate-jwt.js"
+    "generate:jwt": "node scripts/generate-jwt.js",
+    "build": "npm run vercel-build",
+    "vercel-build": "npm install"
   },
   "dependencies": {
     "jose": "^6.0.10",
