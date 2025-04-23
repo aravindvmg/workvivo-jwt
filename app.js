@@ -1,14 +1,14 @@
 import fs from 'fs';
-import { generateJwks } from './scripts/generate-jwks.js';
+import path from 'path';
 
-export default async function handler(req, res) {
-  try {
-    console.log('Request received:', req.method, req.url);
-    const jwks = await generateJwks(); // Ensure this is async if needed
-    console.log('JWKS generated:', jwks);
+// This is for local development (not used on Vercel)
+const jwks = JSON.parse(fs.readFileSync(path.resolve('jwks.json'), 'utf8'));
+
+export default function handler(req, res) {
+  if (req.method === 'GET') {
+    // Respond with JWKS data
     res.status(200).json(jwks);
-  } catch (error) {
-    console.error('Error generating JWKS:', error);
-    res.status(500).send('Internal Server Error');
+  } else {
+    res.status(405).json({ message: 'Method Not Allowed' });
   }
 }

@@ -1,15 +1,19 @@
 {
-  "name": "workvivo-jwt",
+  "name": "new_jwt",
   "version": "1.0.0",
+  "main": "app.js",
   "type": "module",
   "scripts": {
-    "generate:jwks": "node scripts/generate-jwks.js",
-    "generate:jwt": "node scripts/generate-jwt.js",
-    "build": "npm run vercel-build",
-    "vercel-build": "npm install"
+    "start": "node app.js"
   },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
   "dependencies": {
+    "express": "^5.1.0",
     "jose": "^6.0.10",
-    "jsonwebtoken": "^9.0.2"
+    "jsonwebtoken": "^9.0.2",
+    "jwk-to-pem": "^2.0.7"
   }
 }

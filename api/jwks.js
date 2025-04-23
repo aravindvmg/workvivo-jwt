@@ -16,7 +16,7 @@
 //   res.status(200).json(jwks);
 // }
 
-import { generateJwks } from '../scripts/generate-jwks.js';
+import { generateJwks } from '../generate-jwks.js';
 
 export default async function handler(req, res) {
   const jwks = await generateJwks();

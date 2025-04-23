@@ -2,19 +2,18 @@
     "version": 2,
     "builds": [
       {
-        "src": "api/jwks.js",
+        "src": "app.js",
         "use": "@vercel/node"
       }
     ],
     "routes": [
       {
         "src": "/.well-known/jwks.json",
-        "dest": "api/jwks.js"
+        "dest": "app.js"
       },
       {
         "src": "/(.*)",
-        "dest": "api/jwks.js"
+        "dest": "app.js"
       }
     ]
   }
-  

@@ -5,7 +5,8 @@ const privateKey = fs.readFileSync('./private.pem', 'utf8');
 
 const payload = {
   sub: '2506',
-  email: 'user@example.com'
+  email: 'user@example.com',
+  name: 'Your User Name'
 };
 
 const token = jwt.sign(payload, privateKey, {
