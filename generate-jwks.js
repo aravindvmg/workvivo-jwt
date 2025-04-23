@@ -11,9 +11,9 @@ const generateJWKS = async () => {
   jwk.use = 'sig';
   jwk.alg = 'RS256';
 
-  const jwks = { keys: [jwk] };
+  const jwks = jwk;
   fs.writeFileSync('jwks.json', JSON.stringify(jwks, null, 2));
-  console.log('✅ JWKS saved to jwks.json');
+  console.log('✅ JWKS saved to jwks.json',jwks);
 };
 
 generateJWKS();
