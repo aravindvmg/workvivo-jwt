@@ -28,18 +28,34 @@
 //   }
 // }
 
+// import fs from 'fs';
+// import express from 'express';
+
+// const app = express();
+// const port = process.env.PORT || 3000; // Use the port provided by Railway or default to 3000
+
+// const jwks = JSON.parse(fs.readFileSync('./jwks.json', 'utf8'));
+
+// app.get('/.well-known/jwks.json', (req, res) => {
+//   res.json(jwks);
+// });
+
+// app.listen(port, () => {
+//   console.log(`✅ JWKS service running on port ${port}`);
+// });
+
 import fs from 'fs';
-import express from 'express';
+import path from 'path';
 
-const app = express();
-const port = process.env.PORT || 3000; // Use the port provided by Railway or default to 3000
+// This is for local development (not used on Vercel)
+const jwks = JSON.parse(fs.readFileSync(path.resolve('jwks.json'), 'utf8'));
 
-const jwks = JSON.parse(fs.readFileSync('./jwks.json', 'utf8'));
+export default function handler(req, res) {
+  if (req.method === 'GET') {
+    // Respond with JWKS data
+    res.status(200).json(jwks);
+  } else {
+    res.status(405).json({ message: 'Method Not Allowed' });
+  }
+}
 
-app.get('/.well-known/jwks.json', (req, res) => {
-  res.json(jwks);
-});
-
-app.listen(port, () => {
-  console.log(`✅ JWKS service running on port ${port}`);
-});
