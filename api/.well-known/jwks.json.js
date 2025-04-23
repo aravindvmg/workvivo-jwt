@@ -1,4 +1,4 @@
-import jwks from '../../jwks.json';
+import jwks from '../jwks.json';
 
 export default function handler(req, res) {
   if (req.method === 'GET') {
