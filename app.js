@@ -1,19 +1,14 @@
-import express from 'express';
-import { generateJwks } from './scripts/generate-jwks.js';  // Adjust path to your generate-jwks.js file
+import fs from 'fs';
+import { generateJwks } from './scripts/generate-jwks.js';
 
-const app = express();
-const port = 3000;
-
-app.get('/.well-known/jwks.json', async (req, res) => {
+export default async function handler(req, res) {
   try {
-    const jwks = await generateJwks();
+    console.log('Request received:', req.method, req.url);
+    const jwks = await generateJwks(); // Ensure this is async if needed
+    console.log('JWKS generated:', jwks);
     res.status(200).json(jwks);
-  } catch (err) {
-    console.error('Error generating JWKS:', err);
+  } catch (error) {
+    console.error('Error generating JWKS:', error);
     res.status(500).send('Internal Server Error');
   }
-});
-
-app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}`);
-});
+}
