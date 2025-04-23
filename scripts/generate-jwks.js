@@ -10,5 +10,6 @@ export async function generateJwks() {
   jwk.kid = '300|9925f2248d89c4bafba385aeecd80f9908ccfd0b';
   jwk.use = 'sig';
   jwk.alg = 'RS256';
+  console.log(jwk)
   return { keys: [jwk] };
 }
